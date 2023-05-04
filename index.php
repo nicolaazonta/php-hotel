@@ -45,7 +45,7 @@ $hotels = [
             var_dump($value);
         }
     } */
-
+    var_dump($_GET);
 ?>
 
 <!DOCTYPE html>
@@ -62,8 +62,33 @@ $hotels = [
 
 <body>
 
-    <div class="container w-75">
-        <div class="row py-5 g-4">
+    <div class="container w-75 py-5">
+        <div class="row">
+            <div class="col-6">
+
+                <form class="d-flex justify-content-start" method="get">
+                    <select class="form-select mx-2" aria-label="Default select example">
+                        <option selected>Select a vote</option>
+                        <option name="1">One</option>
+                        <option name="2">Two</option>
+                        <option name="3">Three</option>
+                        <option name="4">four</option>
+                        <option name="5">five</option>
+                    </select>
+                    <select class="form-select mx-2" aria-label="Default select example">
+                        <option selected>Select a parking option</option>
+                        <option name="yes">yes</option>
+                        <option name="not">not</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary mx-2">submit</button>
+                </form>
+            </div>
+        </div>
+
+
+
+
+        <div class="row g-4 py-3">
             <?php foreach ($hotels as $hotel) : ?>
                 <div class="col-4">
                     <div class="card p-4 bg-dark text-light h-100">
@@ -77,13 +102,13 @@ $hotels = [
                             <?php else : ?>
                                 <p>
                                     <strong> <?php echo $key ?>:</strong>
-                                    <? echo $value?> 
-                                    
-                                    <?if ($key == 'distance_to_center') :?>
-                                        <?php echo 'km' ?>                                       
+                                    <? echo $value ?>
+
+                                    <? if ($key == 'distance_to_center') : ?>
+                                        <?php echo 'km' ?>
                                     <? endif ?>
-                                    
-                                    
+
+
                                 </p>
                             <?php endif ?>
 
