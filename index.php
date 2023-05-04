@@ -40,12 +40,15 @@ $hotels = [
 
 ];
 
-/*   foreach ($hotels as $hotel) {
-        foreach ($hotel as $key => $value) {
-            var_dump($value);
-        }
-    } */
-    var_dump($_GET);
+//var_dump($_GET);
+
+
+$vote = $_GET['vote'];
+$park = $_GET['park'];
+
+echo "$vote . $park"
+
+
 ?>
 
 <!DOCTYPE html>
@@ -67,18 +70,18 @@ $hotels = [
             <div class="col-6">
 
                 <form class="d-flex justify-content-start" method="get">
-                    <select class="form-select mx-2" aria-label="Default select example">
-                        <option selected>Select a vote</option>
-                        <option name="1">One</option>
-                        <option name="2">Two</option>
-                        <option name="3">Three</option>
-                        <option name="4">four</option>
-                        <option name="5">five</option>
+                    <select name="vote" class="form-select mx-2" aria-label="Default select example">
+                        <option value="null" selected>Select a minimum vote</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        <option value="4">four</option>
+                        <option value="5">five</option>
                     </select>
-                    <select class="form-select mx-2" aria-label="Default select example">
-                        <option selected>Select a parking option</option>
-                        <option name="yes">yes</option>
-                        <option name="not">not</option>
+                    <select name="park" class="form-select mx-2" aria-label="Default select example">
+                        <option value="null" selected>Select a parking option</option>
+                        <option value="true">yes</option>
+                        <option value="false">not</option>
                     </select>
                     <button type="submit" class="btn btn-primary mx-2">submit</button>
                 </form>
@@ -95,22 +98,33 @@ $hotels = [
 
                         <?php foreach ($hotel as $key => $value) : ?>
 
-                            <? if ($key == 'name') : ?>
-
-                                <h3><? echo $value ?></h3>
-
-                            <?php else : ?>
-                                <p>
-                                    <strong> <?php echo $key ?>:</strong>
-                                    <? echo $value ?>
-
-                                    <? if ($key == 'distance_to_center') : ?>
-                                        <?php echo 'km' ?>
-                                    <? endif ?>
 
 
-                                </p>
+                            <? if ($key == 'vote' && $value >= $vote /* && $key == 'parking' && $value == $park */) : ?>
+                                
+
+                                    <? if ($key == 'name') : ?>
+
+                                        <h3><? echo $value ?></h3>
+
+                                    <?php else : ?>
+                                        <p>
+                                            <strong> <?php echo $key ?>:</strong>
+                                            <? echo $value ?>
+
+                                            <? if ($key == 'distance_to_center') : ?>
+                                                <?php echo 'km' ?>
+                                            <? endif ?>
+
+
+                                        </p>
+                                    <?php endif ?>
+
+                                
                             <?php endif ?>
+
+
+
 
                         <?php endforeach ?>
 
