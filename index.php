@@ -66,17 +66,20 @@ $hotels = [
         <div class="row py-5 g-4">
             <?php foreach ($hotels as $hotel) : ?>
                 <div class="col-4">
-                    <div class="card p-4 bg-dark text-light">
+                    <div class="card p-4 bg-dark text-light h-100">
 
                         <?php foreach ($hotel as $key => $value) : ?>
 
-                            <h4> <?php if ($key=='name') : echo $value ?> </h4>
-                            <p>
-                                <?php else : ?>
-                                <strong> <?php echo $key ?>:</strong> 
-                                <?php echo $value ; ?>
-                                <?php endif ?> 
-                            </p>
+                            <? if ($key == 'name') : ?>
+
+                                <h3><? echo $value ?></h3>
+
+                            <?php else : ?>
+                                <p>
+                                    <strong> <?php echo $key ?>:</strong>
+                                    <?php echo $value; ?>
+                                </p>
+                            <?php endif ?>
 
                         <?php endforeach ?>
 
