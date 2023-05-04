@@ -46,7 +46,34 @@ $hotels = [
 $vote = $_GET['vote'];
 $park = $_GET['park'];
 
-echo "$vote . $park"
+$filteredHotels = [];
+
+/* echo "$vote . $park" */
+
+/* foreach ($hotels as $hotel) {
+    foreach ($hotel as $key => $value) {
+        if ($key == 'vote' && $value >= $vote){
+            if ($key == 'parking' && $value == $park ){
+
+                array_push($filteredHotels, $hotel) ;
+            }
+        }
+
+    }    
+}; */
+foreach ($hotels as $hotel) {
+    foreach ($hotel as $key => $value) {
+        if ( ($key == 'parking' && $value == $park) ||  ($key == 'vote' && $value >= $vote)) {
+
+            array_push($filteredHotels, $hotel);
+        }
+    }
+};
+
+var_dump($filteredHotels);
+
+
+
 
 
 ?>
@@ -88,9 +115,6 @@ echo "$vote . $park"
             </div>
         </div>
 
-
-
-
         <div class="row g-4 py-3">
             <?php foreach ($hotels as $hotel) : ?>
                 <div class="col-4">
@@ -99,31 +123,22 @@ echo "$vote . $park"
                         <?php foreach ($hotel as $key => $value) : ?>
 
 
+                            <? if ($key == 'name') : ?>
 
-                            <? if ($key == 'vote' && $value >= $vote /* && $key == 'parking' && $value == $park */) : ?>
-                                
+                                <h3><? echo $value ?></h3>
 
-                                    <? if ($key == 'name') : ?>
+                            <?php else : ?>
 
-                                        <h3><? echo $value ?></h3>
+                                <p>
+                                    <strong> <?php echo $key ?>:</strong>
+                                    <? echo $value ?>
 
-                                    <?php else : ?>
-                                        <p>
-                                            <strong> <?php echo $key ?>:</strong>
-                                            <? echo $value ?>
+                                    <? if ($key == 'distance_to_center') : ?>
+                                        <?php echo 'km' ?>
+                                    <? endif ?>
+                                </p>
 
-                                            <? if ($key == 'distance_to_center') : ?>
-                                                <?php echo 'km' ?>
-                                            <? endif ?>
-
-
-                                        </p>
-                                    <?php endif ?>
-
-                                
                             <?php endif ?>
-
-
 
 
                         <?php endforeach ?>
