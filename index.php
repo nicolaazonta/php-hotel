@@ -62,7 +62,7 @@ $hotels = [
 
 <body>
 
-    <div class="container w-50">
+    <div class="container w-75">
         <div class="row py-5 g-4">
             <?php foreach ($hotels as $hotel) : ?>
                 <div class="col-4">
@@ -77,7 +77,13 @@ $hotels = [
                             <?php else : ?>
                                 <p>
                                     <strong> <?php echo $key ?>:</strong>
-                                    <?php echo $value; ?>
+                                    <? echo $value?> 
+                                    
+                                    <?if ($key == 'distance_to_center') :?>
+                                        <?php echo 'km' ?>                                       
+                                    <? endif ?>
+                                    
+                                    
                                 </p>
                             <?php endif ?>
 
